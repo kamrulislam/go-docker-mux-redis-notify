@@ -25,4 +25,16 @@ var routes = Routes{
 		"/",
 		Index,
 	},
+	Route{
+		"CreateCustomer",
+		"POST",
+		"/customer",
+		CreateCustomer,
+	},
+	Route{
+		"FindCustomer",
+		"GET",
+		"/customer/{email}",
+		FindCustomer,
+	},
 }

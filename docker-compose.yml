@@ -6,3 +6,8 @@ services:
             - '8080:8080'
         volumes:
             - ./:/app
+    redis:
+        image: redis
+        container_name: cache
+        expose:
+            - 6379
