@@ -6,6 +6,8 @@ COPY ./ /app
 
 RUN go mod download
 
-RUN go get github.com/githubnemo/CompileDaemon
+# RUN go get github.com/githubnemo/CompileDaemon
 
-ENTRYPOINT CompileDaemon --build="go build commands/runserver.go" --command=./runserver
+# ENTRYPOINT CompileDaemon --build="go build commands/*.go" --command=./runserver
+
+ENTRYPOINT go run commands/*.go
