@@ -48,7 +48,7 @@ To create a customer either you can use any API Testing Client (eg., Postman, Ta
 curl 'http://localhost:8080/customer' -H 'Connection: keep-alive'  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Sec-Fetch-Site: cross-site' -H 'Sec-Fetch-Mode: cors' -H 'Accept-Encoding: gzip, deflate, br' -H 'Accept-Language: en-AU,en-GB;q=0.9,en-US;q=0.8,en;q=0.7'  --data-binary $'{\n  "Name" : "Kamrul",\n  "Email" : "kamruli@gmail.com",\n  "Phone" : "0400000000"\n}' --compressed
 ```
 - Response:
-```
+```json
 {"Name":"Kamrul","Email":"kamruli@gmail.com","Phone":"0400000000"}
 ```
 
@@ -62,7 +62,7 @@ curl 'http://localhost:8080/customer' -H 'Connection: keep-alive'  -H 'User-Agen
 curl 'http://localhost:8080/customer/kamruli@gmail.com' -H 'Connection: keep-alive'  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Sec-Fetch-Site: cross-site' -H 'Sec-Fetch-Mode: cors' -H 'Accept-Encoding: gzip, deflate, br' -H 'Accept-Language: en-AU,en-GB;q=0.9,en-US;q=0.8,en;q=0.7'  --compressed
 ```
 - Response:
-```
+```json
 {"Name":"Kamrul","Email":"kamruli@gmail.com","Phone":"0400000000"}
 ```
 
@@ -77,8 +77,15 @@ curl 'http://localhost:8080/customer/kamruli@gmail.com' -H 'Connection: keep-ali
 curl 'http://localhost:8080/notify/kamruli@gmail.com' -H 'Connection: keep-alive'  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36' -H 'Content-Type: application/json' -H 'Accept: */*' -H 'Sec-Fetch-Site: cross-site' -H 'Sec-Fetch-Mode: cors' -H 'Accept-Encoding: gzip, deflate, br' -H 'Accept-Language: en-AU,en-GB;q=0.9,en-US;q=0.8,en;q=0.7'  --compressed
 ```
 - Response:
-```
+```json
 {"success":true}
 ```
 
+## High level design philosophy
 
+- A generic **Router** and **Routes** provided to make the routing process simple for [Mux](http://www.gorillatoolkit.org/pkg/mux)
+- A generic Redis controller (`db.go`) added to add (`AddRecord`) and retrieve (`FindRecord`) record
+- **Single Responsibility Principle**  has been followed. All request handler has there separate files. 
+- **Notifier** interface has been designed in a way that any concrete implementation  of the Notifier would be able to integrated in easily.
+- A concrete implementation (using SendGrid of Twilio) of email notification has also been provided.
+  
