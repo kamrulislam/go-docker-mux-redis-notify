@@ -3,7 +3,7 @@ services:
     api:
         build: .
         environment: 
-            - EMAIL_API_KEY=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
+            - EMAIL_API_KEY=${SENDGRID_API_KEY}
         ports:
             - '8080:8080'
         volumes:

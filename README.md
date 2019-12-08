@@ -89,3 +89,8 @@ curl 'http://localhost:8080/notify/kamruli@gmail.com' -H 'Connection: keep-alive
 - **Notifier** interface has been designed in a way that any concrete implementation  of the Notifier would be able to be integrated in easily.
 - A concrete implementation (using SendGrid of Twilio) of email notification has also been provided.
   
+## Future improvements
+
+- A centralized error handling middleware would be a good idea to add.
+- Add some unit tests in another docker-compose.
+- Would be good to use Go routine for email sending since it is a blocking call.  
