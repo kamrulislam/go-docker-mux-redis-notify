@@ -36,5 +36,8 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 	if err := json.NewEncoder(w).Encode(newCustomer); err != nil {
 		HandleError(err)
+		w.WriteHeader(http.StatusInternalServerError)
+		fmt.Fprint(w, "Error ocurred")
+		return
 	}
 }

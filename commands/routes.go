@@ -37,4 +37,10 @@ var routes = Routes{
 		"/customer/{email}",
 		FindCustomer,
 	},
+	Route{
+		"NotifyCustomer",
+		"GET",
+		"/notify/{email}",
+		NotifyCustomer,
+	},
 }

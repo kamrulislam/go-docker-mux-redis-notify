@@ -13,9 +13,9 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8080", r))
 }
 
+//HandleError : a generic function to handle error
 func HandleError(err error) {
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 }
-
