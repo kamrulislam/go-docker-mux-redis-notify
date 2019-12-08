@@ -19,16 +19,16 @@ func (s SendGridNotifier) Notify(customer Customer) error {
 						"email": "` + customer.Email + `"
 					}
 				],
-				"subject": "Sending with Twilio SendGrid is Fun"
+				"subject": "Sending notification with Twilio SendGrid"
 			}
 		],
 		"from": {
-			"email": "kamruli@gmail.com"
+			"email": "varun.verma@bcgdv.com"
 		},
 		"content": [
 			{
 				"type": "text/plain",
-				"value": "and easy to do anywhere, even with Go"
+				"value": "This is to notify you that BCGDV is testing email sending."
 			}
 		]
 	}`)
