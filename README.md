@@ -86,6 +86,6 @@ curl 'http://localhost:8080/notify/kamruli@gmail.com' -H 'Connection: keep-alive
 - A generic **Router** and **Routes** provided to make the routing process simple for [Mux](http://www.gorillatoolkit.org/pkg/mux)
 - A generic Redis controller (`db.go`) added to add (`AddRecord`) and retrieve (`FindRecord`) record
 - **Single Responsibility Principle**  has been followed. All request handler has there separate files. 
-- **Notifier** interface has been designed in a way that any concrete implementation  of the Notifier would be able to integrated in easily.
+- **Notifier** interface has been designed in a way that any concrete implementation  of the Notifier would be able to be integrated in easily.
 - A concrete implementation (using SendGrid of Twilio) of email notification has also been provided.
   
